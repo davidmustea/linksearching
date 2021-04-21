@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 linkraw = input("Site-ul: ")
 
-while linkraw[0] != "www":
-    print("Pune linkul incepand cu 'www' 2")
+while not linkraw.startswith('www'):
+    print("Link-ul trebuie sa inceapa cu 'www'")
     linkraw = input("Site-ul: ")
+
 
 link = f'https://{linkraw}'
 
