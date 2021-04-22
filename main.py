@@ -10,7 +10,6 @@ while not linkraw.startswith('www'):
 
 
 link = f'https://{linkraw}'
-
 httprequest = requests.get(link)
 
 if httprequest.status_code == 200:
