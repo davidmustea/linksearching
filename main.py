@@ -24,37 +24,40 @@ src = httprequest.content
 soup = BeautifulSoup(src,'lxml')
 
 time.sleep(1)
-ceVreaUser = input("Ce facem cu linkul?\nScrie 'help' pentru optiuni.\n\n[1] Cautare linkuri\n[2] Cautare poze\n")
+ceVreaUser = input("Ce facem cu linkul?\nScrie 'help' pentru optiuni.\n")
 
-listaComenzi = ['1','2','3','4','5','help']
+listaComenzi = ['1','2','3','4','5','help','stareNeutra']
 dacaUserScrisHelp = 0
 
-#in caz de comanda invalida
-while ceVreaUser not in listaComenzi:
-    print("Comanda invalida")
-    ceVreaUser = input("Introdu comanda: \n")
+if ceVreaUser not in listaComenzi:
+    ceVreaUser = input("Comanda invalida.\nPune comanda din nou\n")
+    
+#main loop
+while ceVreaUser in listaComenzi:
+    
+    #"help" pentru user
+    if ceVreaUser.lower() == "help":
+        print("[1] Cautare linkuri")
+        print("[2] Cautare poze")
+        ceVreaUser = input("Pune numarul comenzii: \n")
+        dacaUserScrisHelp = 1
 
-#"help" pentru user
-if ceVreaUser.lower() == "help":
-    print("[1] Cautare linkuri")
-    print("[2] Cautare poze")
-    ceVreaUser = input("Pune numarul comenzii: \n")
-    dacaUserScrisHelp = 1
 
-#daca user-ul pune comanda invalida 0
-if ceVreaUser == '0' and dacaUserScrisHelp == 1:
-    print("Amuzantule")
-    time.sleep(1)
-    ceVreaUser = input("Pune o comanda valida de data asta \n")
+    #daca user-ul pune comanda invalida 0
+    if ceVreaUser == '0' and dacaUserScrisHelp == 1:
+        print("Amuzantule")
+        time.sleep(1)
+        ceVreaUser = input("Pune o comanda valida de data asta \n")
 
-if ceVreaUser == '0' and dacaUserScrisHelp == 0:
-    print("Comanda invalida.")
-    ceVreaUser = input("Scrie 'help' pentru comenzi \n")
+    if ceVreaUser == '0' and dacaUserScrisHelp == 0:
+        print("Comanda invalida.")
+        ceVreaUser = input("Scrie 'help' pentru comenzi \n")
 
-#Varianta 1: Cautare linkuri
-if ceVreaUser == '1':
-    print("Cautam linkuri...")
-    print("Rezultate:")
-    print(soup.find_all('a'))
+    #Varianta 1: Cautare linkuri
+    if ceVreaUser == '1':
+        ceVreaUser = 'stareNeutra'
+        print("Cautam linkuri...")
+        print("Rezultate:")
+        print(soup.find_all('a'))
 
 
