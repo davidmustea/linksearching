@@ -23,6 +23,19 @@ if httprequest.status_code != 200:
 src = httprequest.content
 soup = BeautifulSoup(src,'lxml')
 
+#afisare logo
+
+print("""
+   __ _       _                            _     _             
+  / /(_)_ __ | | _____  ___  __ _ _ __ ___| |__ (_)_ __   __ _ 
+ / / | | '_ \| |/ / __|/ _ \/ _` | '__/ __| '_ \| | '_ \ / _` |
+/ /__| | | | |   <\__ \  __/ (_| | | | (__| | | | | | | | (_| |
+\____/_|_| |_|_|\_\___/\___|\__,_|_|  \___|_| |_|_|_| |_|\__, |
+                                                         |___/ 
+""")
+
+
+
 time.sleep(1)
 ceVreaUser = input("Ce facem cu linkul?\nScrie 'help' pentru optiuni.\n")
 
@@ -59,6 +72,7 @@ while ceVreaUser in listaComenzi:
         print("Cautam linkuri...")
         print("Rezultate:")
         print(str(soup.find_all('a')).replace(',','\n'))
+        
         #intrebam user-ul daca vrea sa salveze intr-un fisier rezultatele
         dacaUserVreaSaScrieRezFisierText = input("Vrei sa salvam rezultate intr-un fisier text? (y or n) ")
 
