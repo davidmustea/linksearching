@@ -58,6 +58,20 @@ while ceVreaUser in listaComenzi:
         ceVreaUser = 'stareNeutra'
         print("Cautam linkuri...")
         print("Rezultate:")
-        print(soup.find_all('a'))
+        print(str(soup.find_all('a')).replace(',','\n'))
+        #intrebam user-ul daca vrea sa salveze intr-un fisier rezultatele
+        dacaUserVreaSaScrieRezFisierText = input("Vrei sa salvam rezultate intr-un fisier text? (y or n) ")
+
+        #salvare fisier cu linkuri
+        if dacaUserVreaSaScrieRezFisierText == 'y':
+            try:
+                f = open(linkraw + '_links.txt','x',encoding="utf-8")
+                f.write(str(soup.find_all('a')).replace(',','\n'))
+                f.close()
+            except:
+                print("Exista deja un fisier cu aceeasi nume\nSterge fisierul si incearca din nou ")
+
+        if dacaUserVreaSaScrieRezFisierText == 'n':
+            pass
 
 
