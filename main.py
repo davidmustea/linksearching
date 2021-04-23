@@ -42,11 +42,10 @@ ceVreaUser = input("Ce facem cu linkul?\nScrie 'help' pentru optiuni.\n")
 listaComenzi = ['1','2','3','4','5','help','stareNeutra']
 dacaUserScrisHelp = 0
 
-if ceVreaUser not in listaComenzi:
-    ceVreaUser = input("Comanda invalida.\nPune comanda din nou\n")
+
     
 #main loop
-while ceVreaUser in listaComenzi:
+while ceVreaUser != "quit":
     
     #"help" pentru user
     if ceVreaUser.lower() == "help":
@@ -72,7 +71,7 @@ while ceVreaUser in listaComenzi:
         print("Cautam linkuri...")
         print("Rezultate:")
         print(str(soup.find_all('a')).replace(',','\n'))
-        
+
         #intrebam user-ul daca vrea sa salveze intr-un fisier rezultatele
         dacaUserVreaSaScrieRezFisierText = input("Vrei sa salvam rezultate intr-un fisier text? (y or n) ")
 
